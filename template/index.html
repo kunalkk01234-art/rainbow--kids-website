@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rainbow Kids Play School</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;line-height:1.6;color:#333}
+header{background:#0f4c81;color:white;position:sticky;top:0}
+nav{display:flex;justify-content:space-between;align-items:center;padding:12px 5%;}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:60px;height:60px;border-radius:50%}
+nav a{color:white;text-decoration:none;margin:0 10px}
+.hero{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600');background-size:cover;background-position:center;color:white;text-align:center;padding:120px 20px}
+.hero h1{font-size:3rem}
+.btn{display:inline-block;background:#ffb703;color:#000;padding:12px 24px;text-decoration:none;border-radius:30px;margin-top:15px}
+section{padding:60px 8%}
+h2{text-align:center;margin-bottom:25px;color:#0f4c81}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.about,.contact{background:#f5f8fc}
+footer{background:#0f4c81;color:white;text-align:center;padding:20px}
+form input,form textarea{width:100%;padding:10px;margin:8px 0}
+form button{padding:12px 20px;background:#0f4c81;color:white;border:none}
+@media(max-width:768px){.hero h1{font-size:2rem} nav{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<div class="logo">
+<img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+<div>
+<h3>Rainbow Kids Play School</h3>
+<small>Learn • Play • Grow</small>
+</div>
+</div>
+<div>
+<a href="#about">About</a>
+<a href="#programs">Programs</a>
+<a href="#facilities">Facilities</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Rainbow Kids Play School</h1>
+<p>Building Bright Futures Through Learning and Fun</p>
+<a href="#contact" class="btn">Admission Open</a>
+</section>
+
+<section id="about" class="about">
+<h2>About Us</h2>
+<p>
+Welcome to Rainbow Kids Play School, a nurturing and joyful learning environment dedicated to the holistic development of young minds. Established in 2022, our school provides a safe, caring, and stimulating atmosphere where children can learn, play, and grow with confidence.
+</p>
+<br>
+<p>
+We offer Play Group, Nursery, LKG, UKG and Classes 1 to 5. Under the guidance of Principal Mr. Ajay Kishore, we focus on activity-based learning, creativity, confidence building, and academic excellence.
+</p>
+</section>
+
+<section id="programs">
+<h2>Programs Offered</h2>
+<div class="cards">
+<div class="card"><h3>Play Group</h3></div>
+<div class="card"><h3>Nursery</h3></div>
+<div class="card"><h3>LKG</h3></div>
+<div class="card"><h3>UKG</h3></div>
+<div class="card"><h3>Classes 1 - 5</h3></div>
+</div>
+</section>
+
+<section id="facilities">
+<h2>Facilities</h2>
+<div class="cards">
+<div class="card">CCTV Monitoring</div>
+<div class="card">Indoor Play Area</div>
+<div class="card">Outdoor Playground</div>
+<div class="card">Art & Craft Activities</div>
+<div class="card">Music & Dance</div>
+<div class="card">School Transport</div>
+</div>
+</section>
+
+<section>
+<h2>School Information</h2>
+<div class="cards">
+<div class="card"><strong>Established:</strong> 2022</div>
+<div class="card"><strong>Principal:</strong> Ajay Kishore</div>
+<div class="card"><strong>Timing:</strong> Monday-Saturday<br>8:00 AM - 12:00 PM</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+<p><strong>Address:</strong> Near Vasundhra Homes, Near Dream Cricket Academy, Garigaon, Ranchi, Jharkhand - 835217</p>
+<p><strong>Phone:</strong> 7654689353 / 8709568367</p>
+<p><strong>Email:</strong> rainbowkids@gmail.com</p>
+
+<br>
+<form method="POST" action="/admission">
+
+<input type="text" name="student_name" placeholder="Student Name" required>
+
+<input type="text" name="parent_name" placeholder="Parent Name" required>
+
+<input type="tel" name="phone" placeholder="Phone Number" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<select name="class_name" required>
+    <option value="">Select Class</option>
+    <option>Play Group</option>
+    <option>Nursery</option>
+    <option>LKG</option>
+    <option>UKG</option>
+    <option>Class 1</option>
+    <option>Class 2</option>
+    <option>Class 3</option>
+    <option>Class 4</option>
+    <option>Class 5</option>
+</select>
+
+<textarea
+name="message"
+rows="4"
+placeholder="Additional Information"></textarea>
+
+<button type="submit">
+Send Admission Inquiry
+</button>
+
+</form>
+</section>
+
+<footer>
+<p>© 2026 Rainbow Kids Play School | Learn • Play • Grow</p>
+</footer>
+<a href="https://wa.me/917654689353"
+   target="_blank"
+   class="whatsapp-btn">
+   WhatsApp Us
+</a>
+<style>
+.whatsapp-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px 20px;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+</style>
+</body>
+</html>
