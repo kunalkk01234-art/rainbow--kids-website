@@ -119,7 +119,9 @@ def add_notice():
         <button type='submit'>Add Notice</button>
     </form>
     """
-    @app.route("/admin")
+  
+    
+ @app.route("/admin")
 def admin():
 
     if not session.get("logged_in"):
@@ -223,7 +225,7 @@ def export_excel():
 
     data = cursor.fetchall()
 
-conn.close()
+    conn.close()
 
     wb = Workbook()
     ws = wb.active
