@@ -218,7 +218,10 @@ def export_excel():
 
     data = cursor.fetchall()
 
-    conn.close()
+cursor.execute("SELECT id, notice FROM notices")
+notices = cursor.fetchall()
+
+conn.close()
 
     wb = Workbook()
     ws = wb.active
