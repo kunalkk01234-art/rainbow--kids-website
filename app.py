@@ -86,6 +86,38 @@ def login():
         return "Invalid Login"
 
     return render_template("login.html")
+    @app.route("/add_notice", methods=["GET", "POST"])
+def add_notice():
+
+    if not session.get("logged_in"):
+        return redirect("/login")
+
+    if request.method == "POST":
+
+        notice = request.form["notice"]
+
+        conn = sqlite3.connect("admissions.db")
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "INSERT INTO notices (notice) VALUES (?)",
+            (notice,)
+        )
+
+        conn.commit()
+        conn.close()
+
+        return redirect("/admin")
+
+    return """
+    <h2>Add Notice</h2>
+
+    <form method='POST'>
+        <textarea name='notice' rows='5' cols='50'></textarea>
+        <br><br>
+        <button type='submit'>Add Notice</button>
+    </form>
+    """
 @app.route("/admin")
 def admin():
 
