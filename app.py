@@ -144,19 +144,33 @@ def admin():
     conn.close()
 
     html = """
-    <h1>Rainbow Kids Play School Admissions</h1>
+<h1>Rainbow Kids Play School Admissions</h1>
 
-    <table border='1' cellpadding='10'>
-    <tr>
-        <th>ID</th>
-        <th>Student</th>
-        <th>Parent</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Class</th>
-        <th>Message</th>
-    </tr>
-    """
+<a href='/add_notice'>
+    <button>Add Notice</button>
+</a>
+
+<a href='/export'>
+    <button>Export Excel</button>
+</a>
+
+<a href='/logout'>
+    <button>Logout</button>
+</a>
+
+<br><br>
+
+<table border='1' cellpadding='10'>
+<tr>
+    <th>ID</th>
+    <th>Student</th>
+    <th>Parent</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Class</th>
+    <th>Message</th>
+</tr>
+"""
 
     for row in data:
         html += f"""
