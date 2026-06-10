@@ -119,7 +119,7 @@ def add_notice():
         <button type='submit'>Add Notice</button>
     </form>
     """
-@app.route("/admin")
+    @app.route("/admin")
 def admin():
 
     if not session.get("logged_in"):
@@ -139,54 +139,44 @@ def admin():
     message
     FROM admissions
     """)
-
     data = cursor.fetchall()
 
-cursor.execute("SELECT id, notice FROM notices")
-notices = cursor.fetchall()
+    cursor.execute("SELECT id, notice FROM notices")
+    notices = cursor.fetchall()
 
     conn.close()
 
     html = """
 <h1>Rainbow Kids Play School Admissions</h1>
 
-<a href='/add_notice'>
-    <button>Add Notice</button>
-</a>
-
-<a href='/export'>
-    <button>Export Excel</button>
-</a>
-
-<a href='/logout'>
-    <button>Logout</button>
-</a>
+<a href='/add_notice'><button>Add Notice</button></a>
+<a href='/export'><button>Export Excel</button></a>
+<a href='/logout'><button>Logout</button></a>
 
 <br><br>
 
 <h2>Notices</h2>
 """
-    
+
     for notice in notices:
-    html += f"""
-    <div style='border:1px solid #ccc;padding:10px;margin:5px;'>
-        {notice[1]}
-    </div>
+        html += f"""
+        <div style='border:1px solid #ccc;padding:10px;margin:5px;'>
+            {notice[1]}
+        </div>
+        """
+
+    html += """
+    <table border='1' cellpadding='10'>
+    <tr>
+        <th>ID</th>
+        <th>Student</th>
+        <th>Parent</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Class</th>
+        <th>Message</th>
+    </tr>
     """
-
-html += """
-
-<table border='1' cellpadding='10'>
-<tr>
-    <th>ID</th>
-    <th>Student</th>
-    <th>Parent</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th>Class</th>
-    <th>Message</th>
-</tr>
-"""
 
     for row in data:
         html += f"""
@@ -231,7 +221,7 @@ def export_excel():
     FROM admissions
     """)
 
-  data = cursor.fetchall()
+    data = cursor.fetchall()
 
 conn.close()
 
