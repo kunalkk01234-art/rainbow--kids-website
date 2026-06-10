@@ -142,6 +142,9 @@ def admin():
 
     data = cursor.fetchall()
 
+cursor.execute("SELECT id, notice FROM notices")
+notices = cursor.fetchall()
+
     conn.close()
 
     html = """
@@ -163,7 +166,8 @@ def admin():
 
 <h2>Notices</h2>
 """
-for notice in notices:
+    
+    for notice in notices:
     html += f"""
     <div style='border:1px solid #ccc;padding:10px;margin:5px;'>
         {notice[1]}
@@ -227,10 +231,7 @@ def export_excel():
     FROM admissions
     """)
 
-    data = cursor.fetchall()
-
-cursor.execute("SELECT id, notice FROM notices")
-notices = cursor.fetchall()
+  data = cursor.fetchall()
 
 conn.close()
 
