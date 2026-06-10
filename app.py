@@ -86,7 +86,8 @@ def login():
         return "Invalid Login"
 
     return render_template("login.html")
-    @app.route("/add_notice", methods=["GET", "POST"])
+   
+@app.route("/add_notice", methods=["GET", "POST"])
 def add_notice():
 
     if not session.get("logged_in"):
