@@ -20,6 +20,12 @@ CREATE TABLE IF NOT EXISTS admissions (
     message TEXT
 )
 """)
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS notices (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    notice TEXT
+)
+""")
 
 conn.commit()
 conn.close()
