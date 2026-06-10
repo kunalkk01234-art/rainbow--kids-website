@@ -161,6 +161,17 @@ def admin():
 
 <br><br>
 
+<h2>Notices</h2>
+"""
+for notice in notices:
+    html += f"""
+    <div style='border:1px solid #ccc;padding:10px;margin:5px;'>
+        {notice[1]}
+    </div>
+    """
+
+html += """
+
 <table border='1' cellpadding='10'>
 <tr>
     <th>ID</th>
