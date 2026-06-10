@@ -121,7 +121,7 @@ def add_notice():
     """
   
     
- @app.route("/admin")
+@app.route("/admin")
 def admin():
 
     if not session.get("logged_in"):
